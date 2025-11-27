@@ -3,41 +3,36 @@ package personajes;
 public class rogue {
     //atributos
     private String nombre;
-    private String ps;
-    private String baseDamage;
+    private int ps;
+    private int baseDamage;
     //constructor
-    public rogue(String nombre,String ps, String baseDamage){
+    public rogue(String nombre,int ps, int baseDamage){
         this.nombre = nombre;
-        this.ps= ps;
+        this.ps = ps;
         this.baseDamage = baseDamage;
     }
     //getters y setters
     public String getNombre() {
         return nombre;
     }
-
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-
-    public String getPs() {
+    public int getPs() {
         return ps;
     }
-
-    public void setPs(String ps) {
+    public void setPs(int ps) {
         this.ps = ps;
     }
-
-    public String getBaseDamage() {
+    public int getBaseDamage() {
         return baseDamage;
     }
-
-    public void setBaseDamage(String baseDamage) {
+    public void setBaseDamage(int baseDamage) {
         this.baseDamage = baseDamage;
     }
     //metodos
     
+    
 
 
 }
-
