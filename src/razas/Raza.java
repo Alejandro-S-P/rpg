@@ -1,7 +1,5 @@
 package razas;
 
-import java.util.Scanner;
-
 public class Raza {
     protected String nombre;
     protected int fuerza;
@@ -61,17 +59,12 @@ public class Raza {
         this.destreza = destreza;
     }
     //otros métodos si es necesario
-    public static Raza elegirRaza(Scanner sc) {
-        System.out.println("Seleccione la raza (1. Elfo, 2. Enano):");
-        int opcion = sc.nextInt();
-        switch (opcion) {
-            case 1: return new Elfo();
-            case 2: return new Enano();
-            default:
-                System.out.println("Opción no válida. Se asignará Elfo por defecto.");
-                return new Elfo();
-        }
-    }
+    
 
+
+    @Override
+    public String toString() {
+        return nombre + " (Fuerza:" + fuerza + " Inteligencia:" + inteligencia + " Evasion:" + evasion + " Destreza:" + destreza + ")";
+    }
     
 }

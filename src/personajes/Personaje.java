@@ -41,4 +41,10 @@ public class Personaje {
     }
     
     
+
+
+    @Override
+    public String toString() {
+        return "Nombre: " + nombre + ", Clase: " + getClass().getSimpleName() + ", Raza: " + (raza != null ? raza.getNombre() : "Sin raza") + ", PS: " + ps + ", Daño base: " + baseDamage;
+    }
 }

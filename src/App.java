@@ -30,9 +30,8 @@ public class App {
 
 
 
-        // Pedir clase
-        System.out.println("Seleccione la clase (1. Arquero, 2. Samurai, 3. Guerrero, 4. Rogue, 5. Mago, 6. Monje):");
-        int opcionClase = sc.nextInt();
+        // Pedir clase (con validación)
+        int opcionClase = readInt(sc, "Seleccione la clase (1. Arquero, 2. Samurai, 3. Guerrero, 4. Rogue, 5. Mago, 6. Monje):", 1, 6);
 
         Personaje personaje;
         switch (opcionClase) {
@@ -60,9 +59,8 @@ public class App {
                 break;
         }
 
-        // Pedir raza
-        System.out.println("Seleccione la raza (1. Elfo, 2. Enan, 3.Alien, 4. humano, 5. Licantropo, 6. Orco):");
-        int opcionRaza = sc.nextInt();
+        // Pedir raza (con validación)
+        int opcionRaza = readInt(sc, "Seleccione la raza (1. Elfo, 2. Enano, 3. Alien, 4. Humano, 5. Licantropo, 6. Orco):", 1, 6);
         Raza raza;
         switch (opcionRaza) {
             case 1: raza = new Elfo(); break;
@@ -80,15 +78,29 @@ public class App {
 
         // Mostrar personaje creado
         System.out.println("Personaje creado:");
-        System.out.println("Nombre: " + personaje.getNombre() );
-        System.out.println("Clase: " + personaje.getClass().getSimpleName());
-        System.out.println("Raza: " + personaje.getRaza().getNombre());
-        System.out.println("PS: " + personaje.getPs());
-        System.out.println("Daño base: " + personaje.getBaseDamage());
-
+        System.out.println(personaje.toString());
+        System.out.println("Detalles de raza: " + personaje.getRaza());
 
         sc.close();
     }
+
+    private static int readInt(Scanner sc, String prompt, int min, int max) {
+        while (true) {
+            System.out.println(prompt);
+            String line = sc.nextLine();
+            try {
+                int val = Integer.parseInt(line.trim());
+                if (val < min || val > max) {
+                    System.out.println("Ingrese un número entre " + min + " y " + max + ".");
+                    continue;
+                }
+                return val;
+            } catch (NumberFormatException e) {
+                System.out.println("Entrada inválida. Intente de nuevo.");
+            }
+        }
+    }
+
 }
 
 
