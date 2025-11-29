@@ -1,5 +1,5 @@
 package razas;
-
+import personajes.Personaje;
 public class Raza {
     protected String nombre;
     protected int fuerza;
@@ -59,7 +59,16 @@ public class Raza {
         this.destreza = destreza;
     }
     //otros métodos si es necesario
-    
+    public void aplicaRaciales(Personaje personaje){
+        // Aplicar bonificaciones a PS y daño base
+        personaje.setPs(personaje.getPs()+fuerza/2+ destreza/4);
+        personaje.setBaseDamage(personaje.getBaseDamage()+fuerza/3 + personaje.getDañoFisico()/1+personaje.getDañoMagico()/1);
+        personaje.setArmor(personaje.getArmor()+fuerza);
+        personaje.setDañoFisico(personaje.getDañoFisico()+fuerza/2+ destreza/2);
+        personaje.setDañoMagico(personaje.getDañoMagico()+inteligencia/2+ destreza/2);
+        personaje.setAgilidad(personaje.getAgilidad()+evasion);     
+        
+    }
 
 
     @Override
