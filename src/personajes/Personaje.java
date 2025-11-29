@@ -1,11 +1,18 @@
 package personajes;
 
-public class samurai {
-    private String nombre;
-    private int ps;
-    private int baseDamage;
+import razas.Raza;
+
+public class Personaje {
+    protected String nombre;
+    protected int ps;
+    protected int baseDamage;
+    protected Raza raza;
+
+    public void setRaza(Raza raza) {
+        this.raza = raza;
+    }
     //constructor
-    public samurai(String nombre,int ps, int baseDamage){
+    public Personaje(String nombre,int ps, int baseDamage){
         this.nombre = nombre;
         this.ps = ps;
         this.baseDamage = baseDamage;
@@ -29,5 +36,9 @@ public class samurai {
     public void setBaseDamage(int baseDamage) {
         this.baseDamage = baseDamage;
     }
-    //metodos
+    public Raza getRaza() {
+        return raza;
+    }
+    
+    
 }
