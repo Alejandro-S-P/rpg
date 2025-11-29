@@ -1,6 +1,7 @@
 package personajes;
 
 import razas.Raza;
+import enemigos.Enemigo;
 
 public class Personaje {
     protected String nombre;
@@ -76,11 +77,26 @@ public class Personaje {
     }
 
     //metodos adicionales si es necesario
-
-
-
-
-
+    //metodo ataque
+    public void usarAtaque(int opcion, Enemigo enemigo){
+        System.out.println(nombre + " contra " + enemigo.getNombre());
+        enemigo.setPs(enemigo.getPs() - baseDamage);
+    }
+    public void usarHabilidadRacial(Enemigo enemigo){
+        if(raza != null){
+            raza.habilidadRacial(this, enemigo);
+        }else{
+            System.out.println(nombre + " no tiene raza asignada y no puede usar habilidad racial.");
+        }
+    }
+    public void mostrarAtaque () {
+        System.out.println("1. palmada");
+        System.out.println("2. puño de 1 pulgada");
+        System.out.println("3. patada alta");
+        System.out.println("4. bloque de puntos vitales");
+        System.out.println("5. Habilidad Racial");
+    }
+    //toString
     @Override
     public String toString() {
         return "Nombre: " + nombre + "\n Clase: " + getClass().getSimpleName() + "\n Raza: " + (raza != null ? raza.getNombre() : "Sin raza") + "\n PS: " + ps + "\n Daño base: " + baseDamage + "\n Armor: " + armor + "\n Daño Físico: " + DañoFisico + "\n Daño Mágico: " + DañoMagico + "\n Agilidad: " + agilidad;

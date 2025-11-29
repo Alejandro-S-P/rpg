@@ -1,4 +1,6 @@
 import java.util.Scanner;
+
+import enemigos.Enemigo;
 import personajes.Archer;
 import personajes.Mage;
 import personajes.Monje;
@@ -35,22 +37,23 @@ public class App {
         Personaje personaje;
         switch (opcionClase) {
             case 1:
-                personaje = new Archer(nombre, opcionClase, opcionClase, opcionClase, opcionClase, opcionClase, opcionClase);
+                personaje = new Archer(nombre, 100, 20);
                 break;
             case 2:
-                personaje = new Samurai(nombre, opcionClase, opcionClase, opcionClase, opcionClase, opcionClase, opcionClase);
+                personaje = new Samurai(nombre, 100, 20);
                 break;
             case 3:
-                personaje = new Warrior(nombre, opcionClase, opcionClase);
+                personaje = new Warrior(nombre, 100, 20);
                 break;
             case 4:
-                personaje = new Rogue(nombre, opcionClase, opcionClase, opcionClase, opcionClase, opcionClase, opcionClase);
+                personaje = new Rogue(nombre, 100, 20);
                 break;
             case 5:
-                personaje = new Mage(nombre, opcionClase, opcionClase, opcionClase, opcionClase, opcionClase, opcionClase);
+                personaje = new Mage(nombre, 100, 20);
                 break;
             case 6:
-                personaje = new Monje(nombre, opcionClase, opcionClase, opcionClase, opcionClase, opcionClase, opcionClase);
+                personaje = new Monje(nombre, 100, 20
+                );
                 break;
             default:
                 System.out.println("Opción no válida. Se asignará Guerrero por defecto.");
@@ -78,7 +81,36 @@ public class App {
         // Mostrar personaje creado
         System.out.println("Personaje creado:");
         System.out.println(personaje.toString());
+
+        //aparece un enemigo
+        System.out.println("¡Un enemigo aparece!");
+        Enemigo EsqueletoArquero = new Enemigo("Esqueleto Arquero", 80, 15, "Arco Roto");
+        System.out.println("Te enfrentas a: " + EsqueletoArquero.getNombre() + " con " + EsqueletoArquero.getPs() + " PS.");
+        //bucle de combate simple
+        while (personaje.getPs() > 0 && EsqueletoArquero.getPs() > 0) {
+            
+            personaje.mostrarAtaque();
+            int opcionAtaque = readInt(sc, "Selecciona una opción (1-5):", 1, 5);
+            personaje.usarAtaque(opcionAtaque, EsqueletoArquero);
+            
+
+            if (EsqueletoArquero.getPs() <= 0) {
+                System.out.println("¡Has derrotado al " + EsqueletoArquero.getNombre() + "!");
+                break;
+            }
+
+            // Ataque del enemigo
+            System.out.println(EsqueletoArquero.getNombre() + " ataca a " + personaje.getNombre() + " causando " + EsqueletoArquero.getDaño() + " de daño.");
+            personaje.setPs(personaje.getPs() - EsqueletoArquero.getDaño());
+            System.out.println("PS restante de " + personaje.getNombre() + ": " + personaje.getPs());
+            
+            if (personaje.getPs() <= 0) {
+                System.out.println("¡Has sido derrotado por el " + EsqueletoArquero.getNombre() + "!");
+            }
+        }
+
         
+        //cerrar el Scanner
         sc.close();
     }
     // Método para leer un entero con filtro

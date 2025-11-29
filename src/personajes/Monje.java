@@ -1,9 +1,59 @@
 package personajes;
 
+import enemigos.Enemigo;
+
 public class Monje extends Personaje {
     //constructor
-    public Monje(String nombre,int ps, int baseDamage, int armor, int dañoFisico, int dañoMagico, int agilidad){
-        super(nombre, 100, 10, 25, 5, 5, 5);
+    public Monje(String nombre,int ps, int baseDamage){
+        // valores por defecto para un monje
+        super(nombre, ps, baseDamage, 3, 4, 4, 6);
     }
-    
+    // metodos
+    // metodo ataque
+    @Override
+    public void usarAtaque(int opcion, Enemigo enemigo) {
+        int dañoTotal = baseDamage;
+        String mensaje = "";
+
+        switch (opcion) {
+            case 1:
+                mensaje = "usa palmada";
+                break;
+            case 2:
+                dañoTotal += 10;
+                mensaje = "usa puño de 1 pulgada";
+                break;
+            case 3:
+                dañoTotal += 15;
+                mensaje = "usa patada alta";
+                break;
+            case 4:
+                dañoTotal += 20;
+                mensaje = "usa bloqueo de puntos vitales";
+                break;
+            case 5:
+                if (raza != null) {
+                    raza.habilidadRacial(this, enemigo);
+                } else {
+                    System.out.println(nombre + " no tiene raza asignada.");
+                }
+
+                return;
+            default:
+                System.out.println("Opción de ataque no válida.");
+                return;
+        }
+        System.out.println("-----------------------------------------");
+        System.out.println(nombre + " " + mensaje + " contra " + enemigo.getNombre() + " causando " + dañoTotal + " de daño.");
+        enemigo.setPs(enemigo.getPs() - dañoTotal);
+        System.out.println("PS restante de " + enemigo.getNombre() + ": " + enemigo.getPs());
+    }
+    @Override
+    public void mostrarAtaque () {
+        System.out.println("1. palmada");
+        System.out.println("2. puño de 1 pulgada");
+        System.out.println("3. patada alta");
+        System.out.println("4. bloque de puntos vitales");
+        System.out.println("5. Habilidad Racial");
+    }
 }

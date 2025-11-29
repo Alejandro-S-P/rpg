@@ -1,4 +1,5 @@
 package razas;
+import enemigos.Enemigo;
 import personajes.Personaje;
 public class Raza {
     protected String nombre;
@@ -69,7 +70,10 @@ public class Raza {
         personaje.setAgilidad(personaje.getAgilidad()+evasion);     
         
     }
-
+    public void habilidadRacial(Personaje personaje, Enemigo enemigo){
+        // Implementar habilidad racial específica en subclases
+        System.out.println(personaje.getNombre() + " no tiene habilidad racial definida.");
+    }
 
     @Override
     public String toString() {

@@ -1,5 +1,6 @@
 package razas;
 
+import enemigos.Enemigo;
 import personajes.Personaje;
 
 public class Elfo extends Raza {
@@ -19,5 +20,10 @@ public class Elfo extends Raza {
         personaje.setDañoFisico(personaje.getDañoFisico()+fuerza/2+ destreza/2);
         personaje.setDañoMagico(personaje.getDañoMagico()+inteligencia/2+ destreza/2);
         personaje.setAgilidad(personaje.getAgilidad()+evasion); 
+    }
+    @Override
+    public void habilidadRacial(Personaje personaje, Enemigo enemigo){
+        System.out.println(personaje.getNombre() + " usa lanza onirica " + enemigo.getNombre() + " causando 25 de daño. ");
+        enemigo.setPs(enemigo.getPs() - (personaje.getBaseDamage()));
     }
 }

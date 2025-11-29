@@ -1,5 +1,6 @@
 package razas;
 
+import enemigos.Enemigo;
 import personajes.Personaje;
 
 public class Orco extends Raza {
@@ -21,5 +22,11 @@ public class Orco extends Raza {
         personaje.setDañoFisico(personaje.getDañoFisico()+fuerza/2+ destreza/2);
         personaje.setDañoMagico(personaje.getDañoMagico()+inteligencia/2+ destreza/2);
         personaje.setAgilidad(personaje.getAgilidad()+evasion); 
+    }
+    @Override
+    public void habilidadRacial(Personaje personaje, Enemigo enemigo){
+        System.out.println(personaje.getNombre() + " grito de guerra " + personaje.getNombre() + "recibe aumento de daño y armadura");
+        personaje.setBaseDamage(personaje.getBaseDamage()+20);
+        personaje.setArmor(personaje.getArmor()+20);
     }
 }

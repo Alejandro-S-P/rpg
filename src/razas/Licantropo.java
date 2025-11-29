@@ -1,5 +1,6 @@
 package razas;
 
+import enemigos.Enemigo;
 import personajes.Personaje;
 
 public class Licantropo extends Raza {
@@ -20,5 +21,10 @@ public class Licantropo extends Raza {
         personaje.setDañoFisico(personaje.getDañoFisico()+fuerza/2+ destreza/2);
         personaje.setDañoMagico(personaje.getDañoMagico()+inteligencia/2+ destreza/2);
         personaje.setAgilidad(personaje.getAgilidad()+evasion); 
+    }
+    @Override
+    public void habilidadRacial(Personaje personaje, Enemigo enemigo){
+        System.out.println(personaje.getNombre() + " aullido " + personaje.getBaseDamage()+"aumento de daño de "+ personaje.getNombre());
+        personaje.setBaseDamage(personaje.getBaseDamage()+10);
     }
 }

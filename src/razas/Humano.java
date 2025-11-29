@@ -1,5 +1,6 @@
 package razas;
 
+import enemigos.Enemigo;
 import personajes.Personaje;
 
 public class Humano extends Raza {
@@ -20,6 +21,11 @@ public class Humano extends Raza {
         personaje.setDañoFisico(personaje.getDañoFisico()+fuerza/2+ destreza/2);
         personaje.setDañoMagico(personaje.getDañoMagico()+inteligencia/2+ destreza/2);
         personaje.setAgilidad(personaje.getAgilidad()+evasion); 
+    }
+    @Override
+    public void habilidadRacial(Personaje personaje, Enemigo enemigo){
+        System.out.println(personaje.getNombre() + " usa bendicion " + personaje.getPs()+10 + "aumenta los PS de "+ personaje.getNombre());
+        personaje.setPs(personaje.getPs() + 10);
     }
 }
 
