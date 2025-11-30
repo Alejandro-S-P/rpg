@@ -84,30 +84,54 @@ public class App {
 
         //aparece un enemigo
         System.out.println("¡Un enemigo aparece!");
-        Enemigo EsqueletoArquero = new Enemigo("Esqueleto Arquero", 80, 15, "Arco Roto");
-        System.out.println("Te enfrentas a: " + EsqueletoArquero.getNombre() + " con " + EsqueletoArquero.getPs() + " PS.");
+        Enemigo enemigo = new Enemigo("Esqueleto Arquero", 80, 15, "Arco Roto", 10);
+        System.out.println("Te enfrentas a: " + enemigo.getNombre() + " con " + enemigo.getPs() + " PS.");
         //bucle de combate simple
-        while (personaje.getPs() > 0 && EsqueletoArquero.getPs() > 0) {
-            
-            personaje.mostrarAtaque();
-            int opcionAtaque = readInt(sc, "Selecciona una opción (1-5):", 1, 5);
-            personaje.usarAtaque(opcionAtaque, EsqueletoArquero);
-            
+       while (personaje.getPs() > 0 && enemigo.getPs() > 0) {
+    System.out.println("\n--- Nueva ronda de combate ---");
 
-            if (EsqueletoArquero.getPs() <= 0) {
-                System.out.println("¡Has derrotado al " + EsqueletoArquero.getNombre() + "!");
-                break;
-            }
+    // Probabilidad de que el jugador ataque primero
+    double probJugador = personaje.getAgilidad() / 
+                         (double)(personaje.getAgilidad() + enemigo.getAgilidad());
+    boolean turnoJugadorPrimero = Math.random() < probJugador;
 
-            // Ataque del enemigo
-            System.out.println(EsqueletoArquero.getNombre() + " ataca a " + personaje.getNombre() + " causando " + EsqueletoArquero.getDaño() + " de daño.");
-            personaje.setPs(personaje.getPs() - EsqueletoArquero.getDaño());
-            System.out.println("PS restante de " + personaje.getNombre() + ": " + personaje.getPs());
-            
-            if (personaje.getPs() <= 0) {
-                System.out.println("¡Has sido derrotado por el " + EsqueletoArquero.getNombre() + "!");
-            }
+    if (turnoJugadorPrimero) {
+        // turno del jugador
+        personaje.mostrarAtaque();
+        int opcionAtaque = readInt(sc, "Selecciona una opción (1-5):", 1, 5);
+        personaje.usarAtaque(opcionAtaque, enemigo);
+
+        if (enemigo.getPs() <= 0) {
+            System.out.println("¡Has derrotado al " + enemigo.getNombre() + "!");
+            break;
         }
+
+        // turno del enemigo
+        enemigo.enemigoAtacar(personaje,enemigo);;
+        if (personaje.getPs() <= 0) {
+            System.out.println("¡Has sido derrotado por el " + enemigo.getNombre() + "!");
+            break;
+        }
+
+    } else {
+        // turno del enemigo primero
+        enemigo.enemigoAtacar(personaje,enemigo);
+        if (personaje.getPs() <= 0) {
+            System.out.println("¡Has sido derrotado por el " + enemigo.getNombre() + "!");
+            break;
+        }
+
+        // turno del jugador
+        personaje.mostrarAtaque();
+        int opcionAtaque = readInt(sc, "Selecciona una opción (1-5):", 1, 5);
+        personaje.usarAtaque(opcionAtaque, enemigo);
+
+        if (enemigo.getPs() <= 0) {
+            System.out.println("¡Has derrotado al " + enemigo.getNombre() + "!");
+            break;
+        }
+    }
+}
 
         
         //cerrar el Scanner
