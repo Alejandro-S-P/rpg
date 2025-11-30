@@ -12,6 +12,9 @@ public class Personaje {
     protected int baseDamage;
     protected int agilidad;
     protected Raza raza;
+    protected int nivel =1;
+    protected int experiencia = 0;
+    protected int experienciaNecesaria=100;
 
     public void setRaza(Raza raza) {
         this.raza = raza;
@@ -95,6 +98,28 @@ public class Personaje {
         System.out.println("3. patada alta");
         System.out.println("4. bloque de puntos vitales");
         System.out.println("5. Habilidad Racial");
+    }
+    //ganar exp
+    public void ganarExperiencia(int cantidad) {
+        experiencia += cantidad;
+        System.out.println(nombre+" gana " + cantidad + " puntos de experiencia: " );
+
+        if (experiencia >= experienciaNecesaria) {
+            subirNivel();
+        }
+    }
+    // metodo subir nivel
+    private void subirNivel() {
+        nivel++;
+        experiencia -= experienciaNecesaria;
+        experienciaNecesaria += 50;
+
+        ps += 20;
+        baseDamage += 5;
+        agilidad +=1;
+
+        System.out.println(nombre + " sube al nivel "+ nivel+" :) ");
+        System.out.println("PS: "+ ps+", Daño: "+ baseDamage+", Agilidad: "+ agilidad);
     }
     //toString
     @Override

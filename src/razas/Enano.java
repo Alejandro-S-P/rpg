@@ -25,7 +25,7 @@ public class Enano extends Raza {
     }
     @Override
     public void habilidadRacial(Personaje personaje, Enemigo enemigo){
-        System.out.println(personaje.getNombre() + " usa defensa de la fragua " + personaje.getArmor()+ "aumenta la armadura de "+ personaje.getNombre());
+        System.out.println(personaje.getNombre() + " usa defensa de la fragua " + personaje.getArmor()+ " aumenta la armadura de "+ personaje.getNombre());
        personaje.setArmor(personaje.getArmor() + 10);
     }
 }

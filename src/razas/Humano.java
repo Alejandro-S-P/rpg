@@ -24,7 +24,7 @@ public class Humano extends Raza {
     }
     @Override
     public void habilidadRacial(Personaje personaje, Enemigo enemigo){
-        System.out.println(personaje.getNombre() + " usa bendicion " + personaje.getPs()+10 + "aumenta los PS de "+ personaje.getNombre());
+        System.out.println(personaje.getNombre() + " usa bendicion " + personaje.getPs()+10 + " aumenta los PS de "+ personaje.getNombre());
         personaje.setPs(personaje.getPs() + 10);
     }
 }

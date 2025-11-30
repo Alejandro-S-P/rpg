@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 import enemigos.Enemigo;
+import game.ReadInt;
 import personajes.Archer;
 import personajes.Mage;
 import personajes.Monje;
@@ -15,7 +16,7 @@ import razas.Humano;
 import razas.Licantropo;
 import razas.Orco;
 import razas.Raza;
-
+import game.GeneradorEnemigos;
 public class App {
     public static void main(String[] args) throws Exception {
         //crear el Scanner
@@ -31,8 +32,8 @@ public class App {
 
 
 
-        // Pedir clase (con filtro)
-        int opcionClase = readInt(sc, "Seleccione la clase (1. Arquero, 2. Samurai, 3. Guerrero, 4. Rogue, 5. Mago, 6. Monje):", 1, 6);
+        // Pedir clase (con filtro)o, 2. Samurai, 3. Guerrero, 4. Rogue, 5. Mago, 6. Monje):", 1, 6);
+        int opcionClase = ReadInt.readInt(sc,"Seleccione la clase (1. Archer, 2. Samurai, 3. Warrior, 4. Rogue, 5. Mage, 6. Monje):",1,5);
 
         Personaje personaje;
         switch (opcionClase) {
@@ -62,7 +63,7 @@ public class App {
         }
 
         // Pedir raza (con filtro)
-        int opcionRaza = readInt(sc, "Seleccione la raza (1. Elfo, 2. Enano, 3. Alien, 4. Humano, 5. Licantropo, 6. Orco):", 1, 6);
+        int opcionRaza = ReadInt.readInt(sc, "Seleccione la raza (1. Elfo, 2. Enano, 3. Alien, 4. Humano, 5. Licantropo, 6. Orco):", 1, 6);
         Raza raza;
         switch (opcionRaza) {
             case 1: raza = new Elfo(); break;
@@ -84,8 +85,9 @@ public class App {
 
         //aparece un enemigo
         System.out.println("¡Un enemigo aparece!");
-        Enemigo enemigo = new Enemigo("Esqueleto Arquero", 80, 15, "Arco Roto", 10);
+        Enemigo enemigo = game.GeneradorEnemigos.generarEnemigoAleaotorio(1, "bosque");
         System.out.println("Te enfrentas a: " + enemigo.getNombre() + " con " + enemigo.getPs() + " PS.");
+
         //bucle de combate simple
        while (personaje.getPs() > 0 && enemigo.getPs() > 0) {
     System.out.println("\n--- Nueva ronda de combate ---");
@@ -98,7 +100,7 @@ public class App {
     if (turnoJugadorPrimero) {
         // turno del jugador
         personaje.mostrarAtaque();
-        int opcionAtaque = readInt(sc, "Selecciona una opción (1-5):", 1, 5);
+        int opcionAtaque = ReadInt.readInt(sc, "", 1, 5);
         personaje.usarAtaque(opcionAtaque, enemigo);
 
         if (enemigo.getPs() <= 0) {
@@ -123,7 +125,7 @@ public class App {
 
         // turno del jugador
         personaje.mostrarAtaque();
-        int opcionAtaque = readInt(sc, "Selecciona una opción (1-5):", 1, 5);
+        int opcionAtaque = ReadInt.readInt(sc, "Elige un ataque 1-6: ", 1, 5);
         personaje.usarAtaque(opcionAtaque, enemigo);
 
         if (enemigo.getPs() <= 0) {
@@ -131,29 +133,15 @@ public class App {
             break;
         }
     }
-}
+}//fin bucle
+personaje.ganarExperiencia(5);
 
         
         //cerrar el Scanner
         sc.close();
     }
     // Método para leer un entero con filtro
-    private static int readInt(Scanner sc, String prompt, int min, int max) {
-        while (true) {
-            System.out.println(prompt);
-            String line = sc.nextLine();
-            try {
-                int val = Integer.parseInt(line.trim());
-                if (val < min || val > max) {
-                    System.out.println("Ingrese un número entre " + min + " y " + max + ".");
-                    continue;
-                }
-                return val;
-            } catch (NumberFormatException e) {
-                System.out.println("Entrada inválida. Intente de nuevo.");
-            }
-        }
-    }
+    
 
 }
 

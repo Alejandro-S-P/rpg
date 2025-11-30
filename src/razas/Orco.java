@@ -25,7 +25,7 @@ public class Orco extends Raza {
     }
     @Override
     public void habilidadRacial(Personaje personaje, Enemigo enemigo){
-        System.out.println(personaje.getNombre() + " grito de guerra " + personaje.getNombre() + "recibe aumento de daño y armadura");
+        System.out.println(personaje.getNombre() + " grito de guerra " + personaje.getNombre() + " recibe aumento de daño y armadura");
         personaje.setBaseDamage(personaje.getBaseDamage()+20);
         personaje.setArmor(personaje.getArmor()+20);
     }

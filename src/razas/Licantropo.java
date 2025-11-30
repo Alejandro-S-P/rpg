@@ -24,7 +24,7 @@ public class Licantropo extends Raza {
     }
     @Override
     public void habilidadRacial(Personaje personaje, Enemigo enemigo){
-        System.out.println(personaje.getNombre() + " aullido " + personaje.getBaseDamage()+"aumento de daño de "+ personaje.getNombre());
+        System.out.println(personaje.getNombre() + " aullido " + personaje.getBaseDamage()+" aumento de daño de "+ personaje.getNombre());
         personaje.setBaseDamage(personaje.getBaseDamage()+10);
     }
 }
