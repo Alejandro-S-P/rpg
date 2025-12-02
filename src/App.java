@@ -16,7 +16,7 @@ import razas.Humano;
 import razas.Licantropo;
 import razas.Orco;
 import razas.Raza;
-import game.GeneradorEnemigos;
+
 public class App {
     public static void main(String[] args) throws Exception {
         //crear el Scanner
@@ -32,8 +32,8 @@ public class App {
 
 
 
-        // Pedir clase (con filtro)o, 2. Samurai, 3. Guerrero, 4. Rogue, 5. Mago, 6. Monje):", 1, 6);
-        int opcionClase = ReadInt.readInt(sc,"Seleccione la clase (1. Archer, 2. Samurai, 3. Warrior, 4. Rogue, 5. Mage, 6. Monje):",1,5);
+        // Pedir clase (con filtro)
+        int opcionClase = ReadInt.readInt(sc,"Seleccione la clase (1. Archer, 2. Samurai, 3. Warrior, 4. Rogue, 5. Mage, 6. Monje):",1,6);
 
         Personaje personaje;
         switch (opcionClase) {
@@ -85,7 +85,7 @@ public class App {
 
         //aparece un enemigo
         System.out.println("¡Un enemigo aparece!");
-        Enemigo enemigo = game.GeneradorEnemigos.generarEnemigoAleaotorio(1, "bosque");
+        Enemigo enemigo = game.GeneradorEnemigos.generarEnemigoAleatorio(1, "bosque");
         System.out.println("Te enfrentas a: " + enemigo.getNombre() + " con " + enemigo.getPs() + " PS.");
 
         //bucle de combate simple
@@ -109,7 +109,7 @@ public class App {
         }
 
         // turno del enemigo
-        enemigo.enemigoAtacar(personaje,enemigo);;
+        enemigo.enemigoAtacar(personaje,enemigo);
         if (personaje.getPs() <= 0) {
             System.out.println("¡Has sido derrotado por el " + enemigo.getNombre() + "!");
             break;

@@ -8,4 +8,4 @@ git push origin main
 git pull origin main
 
 ...
->>>>>>> b326b51 (Mensaje descriptivo del commit)
+>>>>>>> ejecutar aplicacion en cmd (java -cp bin App)

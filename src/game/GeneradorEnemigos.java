@@ -34,7 +34,7 @@ public class GeneradorEnemigos {
     }
 
     // metodo genera enemigo
-    public static Enemigo generarEnemigoAleaotorio(int nivelJugador, String entorno){
+    public static Enemigo generarEnemigoAleatorio(int nivelJugador, String entorno){
       //estipulamos categorioa
         Categoria cat = elegirCategoria();
       Enemigo enemigo=null;
