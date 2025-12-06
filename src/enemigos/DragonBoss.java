@@ -2,23 +2,15 @@ package enemigos;
 
 import personajes.Personaje;
 
-public class EsqueletoArquero extends Enemigo {
-    //constructor
-    public EsqueletoArquero(String nombre, int ps, int daño, String arma,int agilidad){
-        // Valores por defecto para EsqueletoArquero: agilidad
+public class DragonBoss extends Enemigo {
+ //constructor
+    public DragonBoss(String nombre, int ps, int daño, String arma,int agilidad){
+        // Valores por defecto para DragonBoss: agilidad
         super(nombre, ps, daño, arma, agilidad);
     }
     //metodos
     @Override
     public void enemigoAtacar(Personaje personaje, Enemigo enemigo) {
-        // Último Aliento primero (exclusivo)
-        if (ps > 0 && ps <= 25) {
-            int dañoUltimoAliento = (daño * 2) + agilidad;
-            System.out.println(nombre + " usa Último Aliento infligiendo " + dañoUltimoAliento + " de daño!");
-            personaje.recibirDaño(dañoUltimoAliento);
-            return;
-        }
-
         // Calcular daño con agilidad
         int dañoTotal = daño + (agilidad / 2);
         String mensaje = "";
@@ -40,6 +32,12 @@ public class EsqueletoArquero extends Enemigo {
         }
 
         System.out.println(nombre + " " + mensaje + " contra " + personaje.getNombre() + " causando " + dañoTotal + " de daño.");
-        personaje.recibirDaño(dañoTotal);
+        personaje.setPs(personaje.getPs() - dañoTotal);
+
+        if (ps > 0 && ps <= 25) {
+            int dañoUltimoAliento = (daño * 2) + agilidad;
+            System.out.println(nombre + " usa Último Aliento infligiendo " + dañoUltimoAliento + " de daño adicional.");
+            personaje.setPs(personaje.getPs() - dañoUltimoAliento);
+        }
     }
 }

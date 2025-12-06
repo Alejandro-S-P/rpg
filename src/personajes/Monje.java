@@ -37,13 +37,16 @@ public class Monje extends Personaje {
                 } else {
                     System.out.println(nombre + " no tiene raza asignada.");
                 }
-
+                return;
+            case 6:
+                mostrarStats();
                 return;
             default:
                 System.out.println("Opción de ataque no válida.");
                 return;
         }
         System.out.println("-----------------------------------------");
+        dañoTotal = calcularDañoConCritico(dañoTotal);
         System.out.println(nombre + " " + mensaje + " contra " + enemigo.getNombre() + " causando " + dañoTotal + " de daño.");
         enemigo.setPs(enemigo.getPs() - dañoTotal);
         System.out.println("PS restante de " + enemigo.getNombre() + ": " + enemigo.getPs());
@@ -55,5 +58,6 @@ public class Monje extends Personaje {
         System.out.println("3. patada alta");
         System.out.println("4. bloque de puntos vitales");
         System.out.println("5. Habilidad Racial");
+        System.out.println("6. Ver Stats");
     }
 }

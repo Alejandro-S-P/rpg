@@ -63,14 +63,15 @@ public class Enemigo {
     public void enemigoAtacar(Personaje personaje, Enemigo enemigo){
         // Calcular daño con influencia de agilidad
         int dañoTotal = enemigo.getDaño() + (enemigo.getAgilidad() / 2);
-        System.out.println(enemigo.getNombre()+" ataco a "+personaje.getNombre()+" restandole: "+dañoTotal);
-        System.out.println("los ps restantes de "+personaje.getNombre()+" son: "+personaje.getPs());
-        personaje.setPs(personaje.getPs()-dañoTotal);
         if (enemigo.getPs()<=25) {
             int dañoUltimoAliento = (enemigo.getDaño() * 2) + enemigo.getAgilidad();
-            System.out.println(enemigo.getNombre()+" uso ultimo aliento inflinjiendo: "+dañoUltimoAliento+" de daño adicional");
-            personaje.setPs(personaje.getPs()-dañoUltimoAliento);
+            System.out.println(enemigo.getNombre()+" uso ultimo aliento inflinjiendo: "+dañoUltimoAliento+" de daño");
+            personaje.recibirDaño(dañoUltimoAliento);
+            return;  // Termina el turno, no hace ataque normal
         }
+        System.out.println(enemigo.getNombre()+" ataco a "+personaje.getNombre()+" restandole: "+dañoTotal);
+        personaje.recibirDaño(dañoTotal);
+        System.out.println("Los PS restantes de "+personaje.getNombre()+" son: "+personaje.getPs());
     }
 
     

@@ -15,17 +15,11 @@ public class Humano extends Raza {
     public void aplicaRaciales(Personaje personaje) {
         super.aplicaRaciales(personaje);
         //bonificaciones raciales adicionales si es necesario
-        personaje.setPs(personaje.getPs()+fuerza/2+destreza/2);
-        personaje.setBaseDamage(((personaje.getDañoMagico()/2)+(personaje.getDañoFisico()/2))+personaje.getBaseDamage());
-        personaje.setArmor(personaje.getArmor()+fuerza/2);
-        personaje.setDañoFisico(personaje.getDañoFisico()+fuerza/2+ destreza/2);
-        personaje.setDañoMagico(personaje.getDañoMagico()+inteligencia/2+ destreza/2);
-        personaje.setAgilidad(personaje.getAgilidad()+evasion); 
     }
     @Override
     public void habilidadRacial(Personaje personaje, Enemigo enemigo){
-        System.out.println(personaje.getNombre() + " usa bendicion " + personaje.getPs()+10 + " aumenta los PS de "+ personaje.getNombre());
         personaje.setPs(personaje.getPs() + 10);
+        System.out.println(personaje.getNombre() + " usa bendicion y aumenta sus PS a " + personaje.getPs());
     }
 }
 

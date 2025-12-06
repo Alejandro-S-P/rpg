@@ -9,6 +9,14 @@ public class EsqueletoNinja extends Enemigo {
     }
 @Override
 public void enemigoAtacar(Personaje personaje, Enemigo enemigo) {
+    // Último Aliento primero (exclusivo)
+    if (ps > 0 && ps <= 25) {
+        int dañoUltimoAliento = (daño * 2) + agilidad;
+        System.out.println(nombre + " usa Último Aliento infligiendo " + dañoUltimoAliento + " de daño!");
+        personaje.recibirDaño(dañoUltimoAliento);
+        return;
+    }
+
     int dañoTotal = daño + (agilidad / 2);
     String mensaje = "";
 
@@ -22,13 +30,7 @@ public void enemigoAtacar(Personaje personaje, Enemigo enemigo) {
 
     System.out.println(nombre + " " + mensaje + " contra " + personaje.getNombre() +
                        " causando " + dañoTotal + " de daño.");
-    personaje.setPs(personaje.getPs() - dañoTotal);
-
-    if (ps > 0 && ps <= 25) {
-        int dañoUltimoAliento = (daño * 2) + agilidad;
-        System.out.println(nombre + " usa Último Aliento infligiendo " + dañoUltimoAliento + " de daño adicional.");
-        personaje.setPs(personaje.getPs() - dañoUltimoAliento);
-    }
+    personaje.recibirDaño(dañoTotal);
 }
 
 }

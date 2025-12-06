@@ -53,6 +53,8 @@ public class GeneradorEnemigos {
       //Variamos sus atributos para que no sean iguales
     //escalamos sus atributos segun el nivel del jugador
     //devolvemos el enemigo final 
+    aplicarVariacionAtributos(enemigo);
+    aplicarEscaladoPorNivel(enemigo, nivelJugador);
     return enemigo; 
     }
     //generar enemigo comun
