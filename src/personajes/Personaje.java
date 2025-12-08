@@ -3,6 +3,8 @@ package personajes;
 import razas.Raza;
 import enemigos.Enemigo;
 import game.Estado;
+import java.util.ArrayList;
+import items.Item;
 
 public class Personaje {
     protected String nombre;
@@ -18,6 +20,7 @@ public class Personaje {
     protected int experienciaNecesaria = 100;
     protected Estado estadoActual = Estado.NINGUNO;
     protected int turnosRestantes = 0;
+    protected ArrayList<Item> inventario;
 
     public void setRaza(Raza raza) {
         this.raza = raza;
@@ -39,6 +42,8 @@ public class Personaje {
         this.DañoMagico = dañoMagico;
         this.agilidad = agilidad;
         this.baseDamage = baseDamage;
+        // Aquí inicializamos el inventario como una lista vacía
+        this.inventario = new ArrayList<>();
     }
 
     // getters y setters
