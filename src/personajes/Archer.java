@@ -42,6 +42,9 @@ public class Archer extends Personaje {
             case 6:
                 mostrarStats();
                 return;
+            case 7:
+                mostrarInventario();
+                return;
             default:
                 System.out.println("Opción de ataque no válida.");
                 return;

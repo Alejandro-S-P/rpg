@@ -190,6 +190,18 @@ public class Personaje {
         System.out.println("Raza: " + (raza != null ? raza.getNombre() : "Sin raza"));
         System.out.println("==============================\n");
     }
+    
+    public void mostrarInventario() {
+    if (inventario.isEmpty()) {
+        System.out.println("El inventario está vacío.");
+    } else {
+        System.out.println("Inventario de " + nombre + ":");
+        for (int i = 0; i < inventario.size(); i++) {
+            Item item = inventario.get(i);
+            System.out.println((i + 1) + ". " + item.getNombre() + " - " + item.getDescripcion());
+        }
+    }
+}
 
     // ganar exp
     public void ganarExperiencia(int cantidad) {
@@ -253,7 +265,14 @@ public class Personaje {
             }
         }
     }
-
+    public void agregarItem(Item item){
+         if (item != null) {
+        inventario.add(item);
+        System.out.println("Se ha agregado el item: " + item.getNombre() + " al inventario de " + nombre);
+    } else {
+        System.out.println("No se puede agregar un item nulo al inventario.");
+    }
+    }
     // toString
     @Override
     public String toString() {
