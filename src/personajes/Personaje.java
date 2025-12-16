@@ -180,6 +180,7 @@ public class Personaje {
         System.out.println("4. bloque de puntos vitales");
         System.out.println("5. Habilidad Racial");
         System.out.println("6. Ver Stats");
+        System.out.println("7. inventario");
     }
 
     public void mostrarStats() {
@@ -190,7 +191,7 @@ public class Personaje {
         System.out.println("Raza: " + (raza != null ? raza.getNombre() : "Sin raza"));
         System.out.println("==============================\n");
     }
-    
+
     public void mostrarInventario() {
     if (inventario.isEmpty()) {
         System.out.println("El inventario está vacío.");

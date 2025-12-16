@@ -146,11 +146,13 @@ public class App {
                     int opcionAtaque;
                     do {
                         personaje.mostrarAtaque();
-                        opcionAtaque = ReadInt.readInt(sc, "", 1, 6);
+                        opcionAtaque = ReadInt.readInt(sc, "", 1, 7);
                         if (opcionAtaque == 6) {
                             personaje.mostrarStats();
+                        }else if (opcionAtaque == 7) {
+                            personaje.mostrarInventario();
                         }
-                    } while (opcionAtaque == 6);
+                    } while (opcionAtaque == 7);
                     personaje.usarAtaque(opcionAtaque, enemigo);
 
                     if (enemigo.getPs() <= 0) {

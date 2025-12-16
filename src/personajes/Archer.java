@@ -65,6 +65,7 @@ public class Archer extends Personaje {
         System.out.println("4. Flecha Ignea");
         System.out.println("5. Habilidad Racial");
         System.out.println("6. Ver Stats");
+        System.out.println("7. ver inventario");
     }
 
 }
